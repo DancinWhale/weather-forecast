@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+    {% block content %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 search_bar">
+                <div>
+                    <h2>Current weather in city: {{ weather[0].current_weather.city }}</h2>
+
+                    Temperature: {{ weather[0].current_weather.temperature }}°C <br>
+                    Humidity: {{ weather[0].current_weather.humidity }} <br>
+                    Wind speed: {{ weather[0].current_weather.wind_speed }} <br>
+                </div>
+                <br>
+
+                <h4>Weather in {{ weather[0].current_weather.city }} in the next five hours</h4>
+                <div class="weather_forecast">
+                    {% for hour in range(1, 6) %}
+                        <div class="next-hour">
+                            <h5>Weather in {{ hour }} hour(s)</h5>
+                            Temperature: {{ weather[hour].temperature }} <br>
+                            Humidity: {{ weather[hour].humidity }} <br>
+                            Wind speed: {{ weather[hour].wind_speed }} <br>
+                        </div>
+                    <br>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    <br>
+                    <a href="/pages">
+                        <button class="btn btn-dark m-1"><- Back</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
